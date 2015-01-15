@@ -52,8 +52,6 @@ cp ../gaia/.jshintrc .jshintrc
 ```
 
 
-
-
 Then update the .git/config to point "origin" to new URL, like to `git@github.com:jrburke/gaia-email.git`.
 
 Finally, push the code to github:
@@ -71,4 +69,12 @@ git push origin refs/remotes/origin/*:refs/heads/*
 ## TODO
 
 * make sure linting works
+* Hook up pre-commit hook for js/css linting, install as part of Makefile setup
+* have an npm install locally for jshint
+
+## DOC TODO
+
+* set up local.mk for location of GAIA_DIR
+* using sync-shared and sync-email
+
 

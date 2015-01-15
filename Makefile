@@ -1,11 +1,12 @@
 
 -include local.mk
 GAIA_DIR?=../gaia
+DIST_NAME?=gaia-email
 
 LATEST_COMMIT=$(shell git -C $(GAIA_DIR) rev-parse --verify HEAD)
 LATEST_BRANCH=$(shell git -C $(GAIA_DIR) rev-parse --abbrev-ref HEAD)
 
-.PHONY: sync-shared sync-email
+.PHONY: help sync-shared sync-locales sync-email dist
 .DEFAULT_GOAL=help
 
 help:
@@ -38,6 +39,11 @@ sync-shared:
 	@echo Synced shared resources from $(GAIA_DIR): $(LATEST_COMMIT)
 	@echo UPDATE THE REPO WITH: git commit -am \"Autosync shared from mozilla-b2g/gaia, branch $(LATEST_BRANCH): $(LATEST_COMMIT)\"
 
+sync-locales:
+	@cp -r $(GAIA_DIR)/apps/email/locales ./gaia-email
+	@echo Synced locales from $(GAIA_DIR)/apps/email: $(LATEST_COMMIT)
+	@echo UPDATE THE REPO WITH: git commit -am \"Autosync locales from mozilla-b2g/gaia, branch $(LATEST_BRANCH): $(LATEST_COMMIT)\"
+
 sync-email:
 	@cp -r $(GAIA_DIR)/apps/email/autoconfig ./gaia-email
 	@cp -r $(GAIA_DIR)/apps/email/js ./gaia-email
@@ -46,7 +52,15 @@ sync-email:
 	@cp -r $(GAIA_DIR)/apps/email/style ./gaia-email
 	@cp -r $(GAIA_DIR)/apps/email/index.html ./gaia-email/index.html
 	@cp -r $(GAIA_DIR)/apps/email/manifest.webapp ./gaia-email/manifest.webapp
+	@cp -r $(GAIA_DIR)/apps/email/build ./
+
 	@echo Synced email files resources from $(GAIA_DIR)/apps/email: $(LATEST_COMMIT)
 	@echo UPDATE THE REPO WITH: git commit -am \"Autosync email from mozilla-b2g/gaia, branch $(LATEST_BRANCH): $(LATEST_COMMIT)\"
 
-
+dist:
+	@mkdir -p dist
+	@rm -rf dist/$(DIST_NAME)
+	@cp -r ./gaia-email dist/$(DIST_NAME)
+	@cd dist
+	@zip -r $(DIST_NAME).zip $(DIST_NAME)/*
+	@cd ..
