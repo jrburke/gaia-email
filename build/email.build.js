@@ -1,8 +1,8 @@
 {
-  appDir: '..',
+  appDir: '../gaia-email',
   baseUrl: 'js',
-  dir: '../../../build_stage/email',
-  mainConfigFile: '../js/mail_app.js',
+  dir: '../build_stage/gaia-email',
+  mainConfigFile: '../gaia-email/js/mail_app.js',
   paths: {
     prim: 'empty:'
   },

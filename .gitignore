@@ -1,2 +1,6 @@
+b2g/
+b2g_sdk/
+build_stage/
 dist/
 local.mk
+node_modules/

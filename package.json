@@ -1,0 +1,11 @@
+{
+  "name": "gaia",
+  "private": true,
+  "version": "0.0.2",
+  "description": "A bundle of components which Gaia needs.",
+  "author": "The Gaia Team <dev-gaia@lists.mozilla.org>",
+  "devDependencies": {
+    "mozilla-download": "~0.4.4",
+    "jshint": "2.5.10"
+  }
+}

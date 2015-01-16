@@ -1,6 +1,6 @@
 {
-  baseUrl: '../js',
-  out: '../../../build_stage/email/js/ext/main-frame-setup.js',
+  baseUrl: '../gaia-email/js',
+  out: '../build_stage/gaia-email/js/ext/main-frame-setup.js',
 
   optimize: 'none',
 

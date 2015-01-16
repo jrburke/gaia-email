@@ -1,8 +1,8 @@
 {
-  appDir: '../js/ext',
+  appDir: '../gaia-email/js/ext',
   baseUrl: '.',
-  dir: '../../../build_stage/email/js/ext',
-  mainConfigFile: '../js/ext/worker-config.js',
+  dir: '../build_stage/gaia-email/js/ext',
+  mainConfigFile: '../gaia-email/js/ext/worker-config.js',
 
   // Do not optimize here, the general gaia email optimization
   // pass will do that, if it is desired.

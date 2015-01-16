@@ -88,11 +88,13 @@ function runOptimizer(args, r) {
 function optimize(options, r) {
   var optimizeOption = 'optimize=' + (options.GAIA_OPTIMIZE === '1' ?
     'uglify2' : 'none');
-  var gelamConfigFile = utils.getFile(options.APP_DIR,
+
+  var gelamConfigFile = utils.getFile(options.STANDALONE_TOP_DIR,
                         'build', 'gelam_worker.build.js');
-  var mainFrameConfigFile = utils.getFile(options.APP_DIR,
+  var mainFrameConfigFile = utils.getFile(options.STANDALONE_TOP_DIR,
                             'build', 'main-frame-setup.build.js');
-  var appConfigFile = utils.getFile(options.APP_DIR, 'build', 'email.build.js');
+  var appConfigFile = utils.getFile(options.STANDALONE_TOP_DIR, 'build',
+                      'email.build.js');
   var stageShared = utils.getFile(options.STAGE_APP_DIR, 'shared');
   var stageJs = utils.getFile(options.STAGE_APP_DIR, 'js');
   var extPrefix = /^.*[\\\/]email[\\\/]js[\\\/]ext[\\\/]/;
@@ -183,6 +185,11 @@ function getParse(r) {
 }
 
 exports.execute = function(options) {
+  // JRB: local hack to get this file to work in separate repo structure
+  // with minimum changes
+  options.STANDALONE_TOP_DIR = utils.getFile(options.APP_DIR, '..').path;
+
+dump('HEY: ' + options.STAGE_APP_DIR + '\n');
   var shared = {
     js: [],
     style: [],
@@ -194,6 +201,7 @@ exports.execute = function(options) {
   var stageAppDir = utils.getFile(options.STAGE_APP_DIR);
   utils.ensureFolderExists(stageAppDir);
   var r = require('r-wrapper').get(options.GAIA_DIR);
+
   var promises = [
     optimize(options, r),
     getParse(r)
@@ -212,7 +220,7 @@ exports.execute = function(options) {
       removeLoader(options);
       removeFiles(options);
     }, function (err) {
-      console.error(err);
+      dump(err + '\n');
       throw err;
     });
 };

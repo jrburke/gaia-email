@@ -68,9 +68,12 @@ git push origin refs/remotes/origin/*:refs/heads/*
 
 ## TODO
 
+* Cannot go privileged because document.registerElement not available to privileged apps.
 * make sure linting works
 * Hook up pre-commit hook for js/css linting, install as part of Makefile setup
 * have an npm install locally for jshint
+* what about `make DEBUG=1` case.
+* Cannot run source file directly on device because of funtion.tostring stripping. KHAAAAN!
 
 ## DOC TODO
 
