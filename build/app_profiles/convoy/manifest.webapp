@@ -1,6 +1,6 @@
 {
-  "name": "Gaia E-Mail",
-  "description": "Gaia E-Mail",
+  "name": "Convoy",
+  "description": "Email with conversations",
   "type": "certified",
   "launch_path": "/index.html",
   "developer": {
@@ -25,20 +25,20 @@
   },
   "locales": {
     "ar": {
-      "name": "Gaia E-Mail",
-      "description": "Gaia E-Mail"
+      "name": "Convoy",
+      "description": "Convoy"
     },
     "en-US": {
-      "name": "Gaia E-Mail",
-      "description": "Gaia E-Mail"
+      "name": "Convoy",
+      "description": "Convoy"
     },
     "fr": {
-      "name": "Gaia E-Mail",
-      "description": "Gaia E-Mail"
+      "name": "Convoy",
+      "description": "Convoy"
     },
     "zh-TW": {
-      "name": "Gaia E-Mail",
-      "description": "Gaia E-Mail"
+      "name": "Convoy",
+      "description": "Convoy"
     }
   },
   "default_locale": "en-US",

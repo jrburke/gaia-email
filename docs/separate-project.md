@@ -60,13 +60,10 @@ Finally, push the code to github:
 git push origin refs/remotes/origin/*:refs/heads/*
 ```
 
-## Builds
+## TODO
 
 * do l10n locale stuff
 * make sure that gaia-email/shared stays intact when copying over.
-
-
-## TODO
 
 * Cannot go privileged because document.registerElement not available to privileged apps.
 * make sure linting works

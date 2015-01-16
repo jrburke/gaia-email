@@ -88,17 +88,22 @@ sync-email:
 	@echo Synced email files resources from $(GAIA_SRC_DIR)/apps/email: $(LATEST_COMMIT)
 	@echo UPDATE THE REPO WITH: git commit -am \"Autosync email from mozilla-b2g/gaia, branch $(LATEST_BRANCH): $(LATEST_COMMIT)\"
 
-dist: b2g_sdk
+dist: clean b2g_sdk
 	# @mkdir -p dist
 	@$(call run-js-command,build)
-	# @rm -rf dist/$(DIST_NAME)
-	# @cp -r ./gaia-email dist/$(DIST_NAME)
-	# @cd dist
-	# @zip -r $(DIST_NAME).zip $(DIST_NAME)/*
-	# @cd ..
+ifdef APP_PROFILE
+	@mv $(STAGE_DIR)/gaia-email $(STAGE_DIR)/$(APP_PROFILE)
+	@cp -rf $(GAIA_DIR)/build/app_profiles/$(APP_PROFILE) $(STAGE_DIR)
+endif
+
+# @rm -rf dist/$(DIST_NAME)
+# @cp -r ./gaia-email dist/$(DIST_NAME)
+# @cd dist
+# @zip -r $(DIST_NAME).zip $(DIST_NAME)/*
+# @cd ..
 
 clean:
-	rm -rf dist
+	rm -rf build_stage
 
 # clean out build products and tools
 really-clean: clean
